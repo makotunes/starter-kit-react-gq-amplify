@@ -153,7 +153,7 @@ const ProductPage: React.FC = () => {
     const [input, setInput] = useState<FormState>({
         id: '',
         name: '',
-        description: null
+        description: ''
     });
     const todos = useTodos();
 
@@ -170,10 +170,10 @@ const ProductPage: React.FC = () => {
         const newTodo: CreateTodoMutationVariables = {
             input: {
                 name: input.name,
-                description: input.description ? String(input.description) : null
+                description: input.description ? String(input.description) : ''
             }
         };
-        setInput({ id: '', name: '', description: null });
+        setInput({ id: '', name: '', description: '' });
         API.graphql(graphqlOperation(createTodo, newTodo));
     };
 
@@ -189,7 +189,7 @@ const ProductPage: React.FC = () => {
         } else if (e.field = 'description') {
             input = {
                 id: id,
-                description: e.props.value ? String(e.props.value) : null
+                description: e.props.value ? String(e.props.value) : ''
             }
         } else {
             return
